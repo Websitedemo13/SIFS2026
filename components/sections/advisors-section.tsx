@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Users, Building2 } from "lucide-react"
 
 interface AdvisorsSectionProps {
   language: "vi" | "en"
@@ -9,59 +10,59 @@ interface AdvisorsSectionProps {
 const content = {
   vi: {
     title: "Ban Cố Vấn & Đối Tác",
-    subtitle: "Các Chuyên Gia Hàng Đầu Đứng Sau SIFS 2026",
+    subtitle: "Mạng lưới chuyên gia và liên minh chiến lược bảo chứng cho SIFS 2026",
     advisors: [
       {
-        name: "TS. Phan Huỳnh Anh",
-        role: "Chủ tịch Quỹ FFVN\nChủ tịch Smentor\nChuyên gia VCCI",
-        image: "/images/advisor-1.jpg",
-      },
-      {
-        name: "Ông Hoàng Cửu Long",
-        role: "Phó Giáo Sư - Tiến Sĩ\nGiảng viên Đại học\nKinh tế TP.HCM",
-        image: "/images/advisor-2.jpg",
+        name: "Ông Phan Huỳnh Anh",
+        role: "Chủ tịch Quỹ FFVN\nChủ tịch HĐQT Công ty Smentor\nChuyên gia Khởi nghiệp VCCI",
+        image: "/images/phan-huynh-anh.jpg", // Bạn hãy thay bằng ảnh thực tế từ máy
       },
       {
         name: "Ông Đoàn Đức Minh",
-        role: "Thạc Sĩ - Nghiên cứu sinh\nGiảng viên Đại học\nWestern Sydney",
-        image: "/images/advisor-3.jpg",
+        role: "Phó Trưởng khoa Du Lịch\nĐại học Kinh tế TP.HCM (UEH)",
+        image: "/images/doan-duc-minh.jpg", // Bạn hãy thay bằng ảnh thực tế từ máy
       },
       {
-        name: "Ông Nguyễn Chí Thành",
-        role: "CEO\nSàn Kết nối Kinh doanh\nVABIX",
-        image: "/images/advisor-4.jpg",
+        name: "Bà Phạm Hoàng Minh Khánh",
+        role: "Phó Giám đốc Trung tâm Công nghiệp sáng tạo\nCEO Công ty Cổ phần Smar",
+        image: "/images/pham-hoang-minh-khanh.jpg", // Bạn hãy thay bằng ảnh thực tế từ máy
+      },
+      {
+        name: "Bà Lê Bảo Ngọc",
+        role: "Phó trưởng phòng\nTrung tâm Khởi nghiệp Đổi mới sáng tạo TP.HCM (SIHUB)",
+        image: "/images/le-bao-ngoc.jpg", // Bạn hãy thay bằng ảnh thực tế từ máy
       },
     ],
     partnersTitle: "Đối Tác Chiến Lược",
-    partners: ["SIHUB", "UEH", "Smentor", "VCCI", "UFM", "HUIT", "Vietnam Records"],
+    partners: ["SIHUB", "UEH", "VCCI", "UFM", "HUIT", "Smentor", "VIETKINGS", "VTF"],
   },
   en: {
     title: "Advisory Board & Partners",
-    subtitle: "Leading Experts Behind SIFS 2026",
+    subtitle: "Leading Experts & Strategic Alliances Behind SIFS 2026",
     advisors: [
       {
-        name: "Dr. Phan Huỳnh Anh",
-        role: "Chairman of FFVN Fund\nChairman of Smentor\nVCCI Expert",
-        image: "/images/advisor-1.jpg",
+        name: "Mr. Phan Huynh Anh",
+        role: "Chairman of FFVN Fund\nChairman of Smentor\nVCCI Startup Expert",
+        image: "/images/phan-huynh-anh.jpg",
       },
       {
-        name: "Mr. Hoàng Cửu Long",
-        role: "Associate Professor - PhD\nLecturer at University\nof Economics HCMC",
-        image: "/images/advisor-2.jpg",
+        name: "Mr. Doan Duc Minh",
+        role: "Vice Dean of Tourism Faculty\nUniversity of Economics HCMC (UEH)",
+        image: "/images/doan-duc-minh.jpg",
       },
       {
-        name: "Mr. Đoàn Đức Minh",
-        role: "Master - Researcher\nLecturer at Western\nSydney University",
-        image: "/images/advisor-3.jpg",
+        name: "Ms. Pham Hoang Minh Khanh",
+        role: "Deputy Director of Creative Industry Center\nCEO of Smar",
+        image: "/images/pham-hoang-minh-khanh.jpg",
       },
       {
-        name: "Mr. Nguyễn Chí Thành",
-        role: "CEO\nBusiness Connection\nPlatform VABIX",
-        image: "/images/advisor-4.jpg",
+        name: "Ms. Le Bao Ngoc",
+        role: "Deputy Manager\nStartup & Innovation Hub HCMC (SIHUB)",
+        image: "/images/le-bao-ngoc.jpg",
       },
     ],
     partnersTitle: "Strategic Partners",
-    partners: ["SIHUB", "UEH", "Smentor", "VCCI", "UFM", "HUIT", "Vietnam Records"],
+    partners: ["SIHUB", "UEH", "VCCI", "UFM", "HUIT", "Smentor", "VIETKINGS", "VTF"],
   },
 }
 
@@ -69,65 +70,75 @@ export default function AdvisorsSection({ language }: AdvisorsSectionProps) {
   const t = content[language]
 
   return (
-    <section id="advisors" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Advisors */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
+    <section id="advisors" className="py-24 bg-[#050505] text-white">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-2 neon-text font-serif">{t.title}</h2>
-          <p className="text-lg text-muted-foreground italic">{t.subtitle}</p>
+          <div className="flex justify-center mb-4">
+            <Users className="text-[#D4AF37]" size={32} />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif">
+            {t.title}
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg italic">
+            {t.subtitle}
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* Advisors Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-24">
           {t.advisors.map((advisor, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass rounded-lg overflow-hidden glass-hover group"
+              className="flex flex-col items-center text-center"
             >
-              <div className="relative h-48 bg-gradient-to-b from-primary to-secondary overflow-hidden">
+              {/* Photo Frame - Optimized for real photos */}
+              <div className="w-full aspect-[4/5] rounded-xl hover:grayscale-0 transition-all duration-500 shadow-2xl">
                 <img
-                  src={advisor.image || "/placeholder.svg"}
+                  src={advisor.image}
                   alt={advisor.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
-              <div className="p-6 text-center">
-                <h3 className="text-lg font-bold text-primary mb-2">{advisor.name}</h3>
-                <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{advisor.role}</p>
-              </div>
+              <h3 className="text-xl font-bold text-[#D4AF37] mb-2">
+                {advisor.name}
+              </h3>
+              <p className="text-sm text-gray-400 whitespace-pre-line leading-relaxed">
+                {advisor.role}
+              </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Partners Marquee */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-20 pt-16 border-t border-border"
-        >
-          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">{t.partnersTitle}</h3>
-          <div className="flex gap-8 overflow-x-auto pb-4 justify-center flex-wrap">
+        {/* Partners Section */}
+        <div className="pt-16 border-t border-white/10">
+          <div className="flex items-center gap-4 justify-center mb-10">
+            <Building2 size={24} className="text-gray-500" />
+            <h3 className="text-xl font-bold tracking-widest uppercase text-gray-400">
+              {t.partnersTitle}
+            </h3>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-6">
             {t.partners.map((partner, index) => (
-              <motion.div
+              <span 
                 key={index}
-                whileHover={{ scale: 1.05 }}
-                className="glass px-6 py-3 rounded-lg whitespace-nowrap font-semibold text-secondary"
+                className="text-lg md:text-2xl font-black text-white/30 hover:text-white transition-colors cursor-default"
               >
                 {partner}
-              </motion.div>
+              </span>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
