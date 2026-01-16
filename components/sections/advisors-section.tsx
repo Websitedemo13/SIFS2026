@@ -55,11 +55,11 @@ const content = {
         role: "Deputy Director of Creative Industry Center\nCEO of Smar",
         image: "/images/pham-hoang-minh-khanh.jpg",
       },
-      {
-        name: "Ms. Le Bao Ngoc",
-        role: "Deputy Manager\nStartup & Innovation Hub HCMC (SIHUB)",
-        image: "/images/le-bao-ngoc.jpg",
-      },
+      
+      
+      
+      
+      
     ],
     partnersTitle: "Strategic Partners",
     partners: ["SIHUB", "UEH", "VCCI", "UFM", "HUIT", "Smentor", "VIETKINGS", "VTF"],
