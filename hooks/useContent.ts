@@ -21,6 +21,12 @@ export function useContent<T>() {
             acc[item.section_name] = item.content
             return acc
           }, {})
+          
+          // Đảm bảo popup luôn có object mặc định để không lỗi UI
+          if (!contentMap.popup) {
+             contentMap.popup = { is_active: false, position: 'center' };
+          }
+
           setContent(contentMap)
         }
       } catch (err) {
@@ -32,6 +38,5 @@ export function useContent<T>() {
     fetchContent()
   }, [])
 
-  // BẮT BUỘC phải return thêm setContent ở đây
   return { content, loading, setContent }
 }

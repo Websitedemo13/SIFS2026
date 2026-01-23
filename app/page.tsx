@@ -12,7 +12,7 @@ import BackToTop from "@/components/back-to-top"
 import USPSection from "@/components/sections/usp-section"
 import AdvisorsSection from "@/components/sections/advisors-section"
 import BoothMapSection from "@/components/sections/booth-map-section"
-
+import PopupGlobal from "@/components/ui/popup-global"
 import { useContent } from "@/hooks/useContent"
 import { SiteData } from "@/types/cms"
 
@@ -39,7 +39,7 @@ export default function Home() {
       ) : (
         <>
           <Starfield />
-          
+          <PopupGlobal data={content?.popup} language={language} />
           {/* FIX LỖI 2741: Truyền data={content?.header} */}
           <Header 
             language={language} 

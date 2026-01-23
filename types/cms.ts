@@ -208,6 +208,17 @@ export interface HeaderSectionData {
   register_text_vi: string;
   register_text_en: string;
 }
+export interface PopupSectionData {
+  is_active: boolean;
+  type: 'image_only' | 'text_and_button' | 'newsletter';
+  image_url?: string;
+  title_vi: string;
+  title_en: string;
+  link?: string;
+  delay_seconds: number;        // Sau bao nhiêu giây thì hiện
+  reappear_hours: number;      // Sau bao nhiêu tiếng thì hiện lại (dùng Cookie/Local Storage)
+  position: 'center' | 'bottom-right' | 'bottom-left';
+}
 // --- SITE DATA WRAPPER (PHẢI TRỎ ĐÚNG FOOTER) ---
 export interface SiteData {
   hero: HeroSectionData;
@@ -220,4 +231,5 @@ export interface SiteData {
   footer: FooterSectionData; // Đã chỉnh sửa đồng bộ
   boothGuidelines: BoothGuidelinesData;
   header: HeaderSectionData;
+  popup: PopupSectionData;
 }

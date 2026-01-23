@@ -27,7 +27,7 @@ export default function PillarsSection({ language, data }: PillarsSectionProps) 
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-6xl font-black text-white font-serif italic mb-4">
-            {title || "4 Trụ Cột SIFS 2026"}
+            {title || "Các Trụ Cột SIFS 2026"}
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>

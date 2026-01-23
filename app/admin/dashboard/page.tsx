@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase";
 import { useContent } from "@/hooks/useContent";
 import { SiteData } from "@/types/cms";
 import { toast } from "sonner";
-import { Loader2, Save, LogOut, Layout, Monitor, Users } from "lucide-react";
+import { Loader2, Save, LogOut, Monitor } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Import Sections
@@ -20,10 +20,12 @@ import BoothGuidelinesConfig from "./config/sections/BoothGuidelinesConfig";
 import AgendaConfig from "./config/sections/AgendaConfig";
 import ContactConfig from "./config/sections/ContactConfig";
 import FooterConfig from "./config/sections/FooterConfig";
-import SubmissionsList from "./config/sections/SubmissionsList"; // FIX: THÊM DÒNG NÀY
+import SubmissionsList from "./config/sections/SubmissionsList";
+import PopupConfig from "./config/sections/PopupConfig";
 
 const TABS = [
-  { id: "submissions", label: "Khách hàng đăng ký" }, // Đưa lên đầu để ưu tiên quản lý data
+  { id: "submissions", label: "Khách hàng đăng ký" },
+  { id: "popup", label: "Cài đặt Popup" },
   { id: "header", label: "Đầu trang (Header)" },
   { id: "hero", label: "Mặt tiền (Hero)" },
   { id: "pillars", label: "Trụ cột" },
@@ -39,14 +41,14 @@ const TABS = [
 export default function AdminDashboard() {
   const router = useRouter();
   const { content, loading: contentLoading, setContent } = useContent<SiteData>();
-  const [activeTab, setActiveTab] = useState("submissions"); // Mặc định mở danh sách khách hàng
+  const [activeTab, setActiveTab] = useState("submissions");
   const [isSaving, setIsSaving] = useState(false);
   const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
     const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      if (error || !user) {
         router.replace("/admin/login");
       } else {
         setAuthLoading(false);
@@ -64,14 +66,22 @@ export default function AdminDashboard() {
   };
 
   const handlePersistSave = async () => {
-    if (!content) return;
-    // Riêng tab submissions không có nút lưu vì nó chỉ hiển thị data từ DB
-    if (activeTab === "submissions") return;
+    // 1. Kiểm tra điều kiện cơ bản
+    if (!content || !activeTab || activeTab === "submissions") return;
 
     setIsSaving(true);
+    
+    // 2. Lấy dữ liệu theo Tab hiện tại
     const sectionData = (content as any)[activeTab];
 
+    if (!sectionData) {
+      toast.error("Dữ liệu trống, không thể lưu.");
+      setIsSaving(false);
+      return;
+    }
+
     try {
+      // 3. Thực hiện Upsert vào Supabase
       const { error } = await supabase
         .from("site_content")
         .upsert({ 
@@ -80,10 +90,12 @@ export default function AdminDashboard() {
         }, { onConflict: "section_name" });
 
       if (error) throw error;
-      toast.success(`Đã cập nhật phần ${TABS.find(t => t.id === activeTab)?.label} thành công!`);
+
+      toast.success(`Cập nhật ${TABS.find(t => t.id === activeTab)?.label} thành công!`);
     } catch (err: any) {
-      toast.error("Lỗi đồng bộ Database.");
-      console.error(err);
+      // FIX LỖI DÒNG 86/91: In ra lỗi chi tiết để debug
+      console.error("CRITICAL DATABASE ERROR:", err.message || err);
+      toast.error("Lỗi đồng bộ Database. Hãy kiểm tra các trường dữ liệu.");
     } finally {
       setIsSaving(false);
     }
@@ -100,6 +112,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] flex font-sans">
+      {/* SIDEBAR */}
       <aside className="w-80 bg-white border-r border-slate-200 p-10 flex flex-col sticky top-0 h-screen shadow-xl z-20">
         <div className="flex items-center gap-4 text-primary mb-12">
           <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 text-white">
@@ -124,12 +137,13 @@ export default function AdminDashboard() {
           ))}
         </nav>
         
-        <button onClick={async () => { await supabase.auth.signOut(); window.location.href = "/admin/login"; }} 
-                className="mt-10 py-5 flex items-center justify-center gap-3 border border-slate-100 rounded-2xl text-[10px] font-black text-slate-400 uppercase tracking-widest hover:bg-red-50 hover:text-red-500 transition-all">
+        <button onClick={async () => { await supabase.auth.signOut(); router.push("/admin/login"); }} 
+                className="mt-10 py-5 flex items-center justify-center gap-3 border border-slate-100 rounded-2xl text-[10px] font-black text-gray-400 uppercase tracking-widest hover:bg-red-50 hover:text-red-500 transition-all">
           <LogOut size={16} /> Thoát hệ thống
         </button>
       </aside>
 
+      {/* MAIN CONTENT */}
       <main className="flex-1 overflow-y-auto h-screen bg-slate-50/50 relative scroll-smooth">
         <div className="max-w-6xl mx-auto p-16">
           <header className="mb-16 flex justify-between items-center sticky top-0 bg-[#f8fafc]/80 backdrop-blur-2xl py-8 z-30 border-b border-slate-200/50 px-4 -mx-4 rounded-b-[2rem]">
@@ -140,12 +154,13 @@ export default function AdminDashboard() {
               </h2>
             </div>
 
-            {/* Chỉ hiện nút Lưu nếu không phải tab danh sách khách hàng */}
             {activeTab !== "submissions" && (
               <button 
                 onClick={handlePersistSave}
                 disabled={isSaving}
-                className="flex items-center gap-4 px-12 py-5 rounded-2xl font-black text-[12px] uppercase tracking-[0.2em] transition-all duration-500 bg-primary text-white hover:bg-red-600 shadow-2xl shadow-primary/30 active:scale-95 hover:-translate-y-1"
+                className={`flex items-center gap-4 px-12 py-5 rounded-2xl font-black text-[12px] uppercase tracking-[0.2em] transition-all duration-500 shadow-2xl shadow-primary/30 active:scale-95 hover:-translate-y-1 ${
+                  isSaving ? "bg-slate-400 cursor-not-allowed" : "bg-primary text-white hover:bg-red-600"
+                }`}
               >
                 {isSaving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                 {isSaving ? "Đang xử lý..." : "Lưu thay đổi ngay"}
@@ -173,6 +188,7 @@ export default function AdminDashboard() {
                 {activeTab === "agenda" && <AgendaConfig data={safeContent.agenda} updateData={(val) => handleLocalUpdate("agenda", val)} />}
                 {activeTab === "contact" && <ContactConfig data={safeContent.contact} updateData={(val) => handleLocalUpdate("contact", val)} />}
                 {activeTab === "footer" && <FooterConfig data={safeContent.footer} updateData={(val) => handleLocalUpdate("footer", val)} />}
+                {activeTab === "popup" && <PopupConfig data={safeContent.popup} updateData={(val) => handleLocalUpdate("popup", val)} />}
               </motion.div>
             </AnimatePresence>
           </div>
