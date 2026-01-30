@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Users, Building2, Quote } from "lucide-react"
+import { Quote } from "lucide-react"
 import { AdvisorsSectionData } from "@/types/cms"
 
 interface AdvisorsSectionProps {
@@ -20,12 +20,13 @@ export default function AdvisorsSection({ language, data }: AdvisorsSectionProps
           <h2 className="text-5xl md:text-8xl font-black mb-6 font-serif italic uppercase tracking-tighter neon-text">
             {language === "vi" ? data.title_vi : data.title_en}
           </h2>
+          {/* Rút gọn data.subtitle nếu bạn đã tách phần partners ra */}
           <p className="text-gray-400 max-w-2xl mx-auto text-lg italic opacity-70">
             {language === "vi" ? data.subtitle_vi : data.subtitle_en}
           </p>
         </motion.div>
 
-        {/* Advisors Grid - Box Siêu Đẹp */}
+        {/* Advisors Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {data.advisors?.map((advisor, index) => (
             <motion.div
@@ -48,7 +49,6 @@ export default function AdvisorsSection({ language, data }: AdvisorsSectionProps
                   {language === "vi" ? advisor.role_vi : advisor.role_en}
                 </p>
                 <div className="w-10 h-1 bg-primary/20 rounded-full group-hover:w-20 group-hover:bg-primary transition-all duration-500" />
-                {/* Phần mô tả chi tiết */}
                 <p className="text-sm text-gray-500 italic leading-relaxed line-clamp-4 group-hover:text-gray-300 transition-colors">
                   {language === "vi" ? advisor.bio_vi : advisor.bio_en}
                 </p>
@@ -56,21 +56,8 @@ export default function AdvisorsSection({ language, data }: AdvisorsSectionProps
             </motion.div>
           ))}
         </div>
-
-        {/* Partners - Typography Nghệ thuật */}
-        <div className="mt-32 pt-20 border-t border-white/5 relative text-center">
-          <div className="absolute -top-px left-1/2 -translate-x-1/2 w-40 h-0.5 bg-primary" />
-          <h3 className="text-[10px] font-black tracking-[0.5em] text-gray-600 uppercase mb-16 italic">
-            {language === "vi" ? data.partners_title_vi : data.partners_title_en}
-          </h3>
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-8 px-4">
-            {data.partners?.map((partner, i) => (
-              <span key={i} className="text-2xl md:text-5xl font-black text-white/20 hover:text-white transition-all cursor-default italic uppercase tracking-tighter">
-                {partner}
-              </span>
-            ))}
-          </div>
-        </div>
+        
+        {/* ĐÃ XÓA PHẦN PARTNERS Ở ĐÂY */}
       </div>
     </section>
   )

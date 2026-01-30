@@ -6,6 +6,7 @@ import HeroSection from "@/components/sections/hero-section"
 import PillarsSection from "@/components/sections/pillars-section"
 import AgendaSection from "@/components/sections/agenda-section"
 import ContactSection from "@/components/sections/contact-section"
+import PartnersSection from "@/components/sections/partners-section"
 import Footer from "@/components/footer"
 import Starfield from "@/components/starfield"
 import BackToTop from "@/components/back-to-top"
@@ -66,7 +67,7 @@ export default function Home() {
           </div>
 
           <ContactSection language={language} data={content?.contact} />
-          
+          <PartnersSection language={language} data={content?.partners} />
           {/* TRUYỀN DATA CMS VÀO FOOTER */}
           <Footer language={language} data={content?.footer} />
           

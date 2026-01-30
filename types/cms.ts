@@ -219,6 +219,25 @@ export interface PopupSectionData {
   reappear_hours: number;      // Sau bao nhiêu tiếng thì hiện lại (dùng Cookie/Local Storage)
   position: 'center' | 'bottom-right' | 'bottom-left';
 }
+export interface PartnerBrand {
+  id: string;
+  name: string;
+  logo_url: string;
+  website_url?: string;
+}
+
+export interface PartnerGroup {
+  id: string;
+  group_name_vi: string;
+  group_name_en: string;
+  brands: PartnerBrand[];
+}
+
+export interface PartnersSectionData {
+  title_vi: string;
+  title_en: string;
+  groups: PartnerGroup[]; // Nhiều hàng đối tác khác nhau
+}
 // --- SITE DATA WRAPPER (PHẢI TRỎ ĐÚNG FOOTER) ---
 export interface SiteData {
   hero: HeroSectionData;
@@ -227,9 +246,10 @@ export interface SiteData {
   advisors: AdvisorsSectionData;
   boothMap: BoothMapSectionData;
   agenda: AgendaSectionData;
-  contact: ContactSectionData;
+  contact: ContactSectionData;  
   footer: FooterSectionData; // Đã chỉnh sửa đồng bộ
   boothGuidelines: BoothGuidelinesData;
   header: HeaderSectionData;
+  partners: PartnersSectionData;
   popup: PopupSectionData;
 }

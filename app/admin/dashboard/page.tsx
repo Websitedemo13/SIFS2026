@@ -22,7 +22,7 @@ import ContactConfig from "./config/sections/ContactConfig";
 import FooterConfig from "./config/sections/FooterConfig";
 import SubmissionsList from "./config/sections/SubmissionsList";
 import PopupConfig from "./config/sections/PopupConfig";
-
+import PartnersConfig from "./config/sections/PartnersConfig";
 const TABS = [
   { id: "submissions", label: "Khách hàng đăng ký" },
   { id: "popup", label: "Cài đặt Popup" },
@@ -35,7 +35,9 @@ const TABS = [
   { id: "boothGuidelines", label: "Quy định gian hàng" },
   { id: "agenda", label: "Lịch trình" },
   { id: "contact", label: "Liên hệ" },
+  { id: "partners", label: "Đối tác (Brand)" },
   { id: "footer", label: "Chân trang (Footer)" },
+  
 ];
 
 export default function AdminDashboard() {
@@ -187,6 +189,7 @@ export default function AdminDashboard() {
                 {activeTab === "boothGuidelines" && <BoothGuidelinesConfig data={safeContent.boothGuidelines} updateData={(val) => handleLocalUpdate("boothGuidelines", val)} />}
                 {activeTab === "agenda" && <AgendaConfig data={safeContent.agenda} updateData={(val) => handleLocalUpdate("agenda", val)} />}
                 {activeTab === "contact" && <ContactConfig data={safeContent.contact} updateData={(val) => handleLocalUpdate("contact", val)} />}
+                {activeTab === "partners" && <PartnersConfig data={safeContent.partners} updateData={(val) => handleLocalUpdate("partners", val)} />}
                 {activeTab === "footer" && <FooterConfig data={safeContent.footer} updateData={(val) => handleLocalUpdate("footer", val)} />}
                 {activeTab === "popup" && <PopupConfig data={safeContent.popup} updateData={(val) => handleLocalUpdate("popup", val)} />}
               </motion.div>

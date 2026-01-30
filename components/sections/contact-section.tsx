@@ -124,7 +124,7 @@ export default function ContactSection({ language, data }: ContactSectionProps) 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] ml-4 flex items-center gap-2"><User size={12}/> Fullname</label>
-                    <input required value={formData.fullname} onChange={e => setFormData({...formData, fullname: e.target.value})} className="w-full px-8 py-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-primary focus:bg-white/[0.08] outline-none transition-all font-bold" placeholder="VD: Quách Thành Long" />
+                    <input required value={formData.fullname} onChange={e => setFormData({...formData, fullname: e.target.value})} className="w-full px-8 py-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-primary focus:bg-white/[0.08] outline-none transition-all font-bold" placeholder="VD: Nguyễn Văn A" />
                   </div>
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] ml-4 flex items-center gap-2"><Smartphone size={12}/> Phone Number</label>
@@ -133,7 +133,7 @@ export default function ContactSection({ language, data }: ContactSectionProps) 
                 </div>
                 <div className="space-y-3">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] ml-4 flex items-center gap-2"><Mail size={12}/> Email Address</label>
-                  <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full px-8 py-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-primary focus:bg-white/[0.08] outline-none transition-all font-bold" placeholder="long@example.com" />
+                  <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full px-8 py-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-primary focus:bg-white/[0.08] outline-none transition-all font-bold" placeholder="nguyenvana@example.com" />
                 </div>
                 <div className="space-y-3">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] ml-4">Message</label>

@@ -2,16 +2,15 @@
 
 import { useState } from "react"
 import { AdvisorsSectionData, AdvisorItem, CmsSectionProps } from "@/types/cms"
-import { Plus, Trash2, Upload, Users, Building2, Image as ImageIcon, Loader2 } from "lucide-react"
+import { Plus, Trash2, Upload, Users, Image as ImageIcon, Loader2 } from "lucide-react"
 import { supabase } from "@/lib/supabase"
 import { toast } from "sonner"
 
 export default function AdvisorsConfig({ data, updateData }: CmsSectionProps<AdvisorsSectionData>) {
   const [uploadingId, setUploadingId] = useState<string | null>(null)
 
-  // Đảm bảo data luôn có mảng advisors và partners
+  // Chỉ tập trung vào advisors
   const safeAdvisors = data.advisors || []
-  const safePartners = data.partners || []
 
   const addAdvisor = () => {
     const newItem: AdvisorItem = { 
@@ -34,10 +33,10 @@ export default function AdvisorsConfig({ data, updateData }: CmsSectionProps<Adv
 
   return (
     <div className="space-y-10 pb-24 font-sans text-slate-900">
-      {/* HEADER CMS */}
+      {/* 1. HEADER SECTION */}
       <div className="bg-white p-10 rounded-[3rem] border border-slate-200 shadow-sm space-y-6">
         <h3 className="text-sm font-black uppercase text-primary italic flex items-center gap-2">
-          <Users size={18}/> Nội dung chính Section
+          <Users size={18}/> Nội dung chính Section Cố Vấn
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
@@ -53,7 +52,7 @@ export default function AdvisorsConfig({ data, updateData }: CmsSectionProps<Adv
         </div>
       </div>
 
-      {/* ADVISORS LIST */}
+      {/* 2. ADVISORS LIST */}
       <div className="space-y-6">
         <div className="flex justify-between items-center px-6">
           <h4 className="text-[10px] font-black uppercase text-slate-400 tracking-widest italic">Danh sách thành viên</h4>
@@ -85,7 +84,7 @@ export default function AdvisorsConfig({ data, updateData }: CmsSectionProps<Adv
                 </label>
               </div>
 
-              {/* Thông tin Cố vấn */}
+              {/* Thông tin */}
               <div className="lg:col-span-9 space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <input className="px-6 py-4 bg-slate-50 rounded-2xl text-xs font-black" value={advisor.name_vi} onChange={e => updateAdvisor(advisor.id, { name_vi: e.target.value })} placeholder="Tên (VI)" />
@@ -94,13 +93,12 @@ export default function AdvisorsConfig({ data, updateData }: CmsSectionProps<Adv
                   <input className="px-6 py-4 bg-slate-100 rounded-2xl text-[11px] font-bold italic text-blue-600" value={advisor.role_en} onChange={e => updateAdvisor(advisor.id, { role_en: e.target.value })} placeholder="Role (EN)" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <textarea className="px-6 py-4 bg-slate-50 rounded-2xl text-[11px] font-medium h-24 italic" value={advisor.bio_vi} onChange={e => updateAdvisor(advisor.id, { bio_vi: e.target.value })} placeholder="Mô tả chi tiết tiểu sử (VI)..." />
+                  <textarea className="px-6 py-4 bg-slate-50 rounded-2xl text-[11px] font-medium h-24 italic" value={advisor.bio_vi} onChange={e => updateAdvisor(advisor.id, { bio_vi: e.target.value })} placeholder="Mô tả tiểu sử (VI)..." />
                   <textarea className="px-6 py-4 bg-slate-50 rounded-2xl text-[11px] font-medium h-24 italic text-blue-600" value={advisor.bio_en} onChange={e => updateAdvisor(advisor.id, { bio_en: e.target.value })} placeholder="Bio detail (EN)..." />
                 </div>
               </div>
             </div>
 
-            {/* Nút Xóa */}
             <button 
               onClick={() => {
                 if(confirm("Xóa cố vấn này?")) {
@@ -113,19 +111,6 @@ export default function AdvisorsConfig({ data, updateData }: CmsSectionProps<Adv
             </button>
           </div>
         ))}
-      </div>
-
-      {/* PARTNERS */}
-      <div className="bg-white p-10 rounded-[3rem] border border-slate-200 shadow-sm space-y-6">
-        <h3 className="text-sm font-black uppercase text-primary italic flex items-center gap-2">
-          <Building2 size={18}/> Đối tác chiến lược
-        </h3>
-        <textarea 
-          className="w-full h-32 px-8 py-6 bg-slate-50 rounded-[2rem] text-xs font-bold leading-relaxed outline-none border-none focus:ring-2 focus:ring-primary/20 transition-all" 
-          value={safePartners.join(", ")} 
-          onChange={e => updateData({...data, partners: e.target.value.split(",").map(s => s.trim()).filter(s => s !== "")})}
-          placeholder="SIHUB, UEH, VCCI, VINE..."
-        />
       </div>
     </div>
   )

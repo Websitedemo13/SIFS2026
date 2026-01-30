@@ -24,14 +24,29 @@ export const metadata: Metadata = {
   title: "SIFS 2026 - Startup & Innovation Festival",
   description: "Ngày hội khởi nghiệp & đổi mới sáng tạo mùa xuân 2026 tại SIHUB. Nơi hội tụ các tài năng và ý tưởng đột phá.",
   generator: "quachthanhlong",
-  metadataBase: new URL("https://sifs2026.vn"),
+  metadataBase: new URL("https://sifs2026.learnforgrowth.com.vn/"),
   icons: {
-    icon: "/icon.svg",
+    icon: "/favicon.ico",
     apple: "/apple-icon.png",
   },
   openGraph: {
     title: "SIFS 2026 - Startup & Innovation Festival",
     description: "Hành trình đổi mới sáng tạo mùa xuân 2026",
+    images: [
+      {
+        url: "/og-image.jpg", // File đặt tại public/og-image.jpg
+        width: 1200,          // Kích thước chuẩn để FB/Zalo hiện đẹp nhất
+        height: 630,
+        alt: "SIFS 2026 Preview Image",
+      },
+  ],
+  locale: "vi_VN",
+    type: "website",
+    },
+    twitter: {
+    card: "summary_large_image",
+    title: "SIFS 2026",
+    description: "Startup & Innovation Festival 2026",
     images: ["/og-image.jpg"],
   },
 }
