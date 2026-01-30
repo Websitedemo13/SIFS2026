@@ -10,68 +10,76 @@ export default function USPSection({ language, data }: { language: "vi" | "en", 
   const t = {
     title: language === "vi" ? data.title_vi : data.title_en,
     subtitle: language === "vi" ? data.subtitle_vi : data.subtitle_en,
+    aspect: language === "vi" ? "Đặc điểm" : "Aspect",
+    traditional: language === "vi" ? "Sự kiện truyền thống" : "Traditional Event",
   }
 
   return (
-    <section className="py-24 bg-[#050505] relative overflow-hidden">
-      {/* Decor Background */}
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[150px] pointer-events-none" />
+    /* CHUYỂN SANG NỀN TRẮNG */
+    <section className="py-24 bg-white relative overflow-hidden font-sans">
+      {/* Decor Background nhẹ nhàng */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-black text-white font-serif italic mb-4 uppercase tracking-tighter">
+          {/* Tiêu đề 7xl đồng bộ */}
+          <h2 className="text-4xl md:text-7xl font-black text-slate-900 font-serif italic mb-6 uppercase tracking-tighter">
             {t.title || "Lợi thế vượt trội"}
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto italic">{t.subtitle}</p>
+          <div className="w-20 h-1.5 bg-primary mx-auto rounded-full opacity-20 mb-6" />
+          <p className="text-slate-400 max-w-2xl mx-auto italic font-medium">{t.subtitle}</p>
         </motion.div>
 
-        <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-white/5">
-                <th className="p-6 md:p-8 text-[10px] font-black uppercase tracking-widest text-gray-500">Đặc điểm / Aspect</th>
-                <th className="p-6 md:p-8 text-[10px] font-black uppercase tracking-widest text-gray-400">Sự kiện truyền thống</th>
-                <th className="p-6 md:p-8 text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-2">
-                  <Zap size={14} className="fill-primary"/> SIFS 2026
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/5">
-              {data.comparison?.map((row, index) => (
-                <motion.tr 
-                  key={row.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="hover:bg-white/[0.02] transition-colors"
-                >
-                  <td className="p-6 md:p-8">
-                    <span className="text-sm font-bold text-gray-300">
-                      {language === "vi" ? row.aspect_vi : row.aspect_en}
-                    </span>
-                  </td>
-                  <td className="p-6 md:p-8">
-                    <div className="flex items-center gap-3 text-gray-500 text-xs italic">
-                      <XCircle size={14} className="shrink-0 text-gray-600" />
-                      {language === "vi" ? row.traditional_vi : row.traditional_en}
-                    </div>
-                  </td>
-                  <td className="p-6 md:p-8 bg-primary/5">
-                    <div className="flex items-center gap-3 text-white text-sm font-black italic">
-                      <CheckCircle2 size={16} className="shrink-0 text-primary" />
-                      {language === "vi" ? row.sifs_vi : row.sifs_en}
-                    </div>
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
+        {/* Table Container với Shadow cực sang */}
+        <div className="overflow-hidden rounded-[3rem] border border-slate-100 bg-white shadow-[0_40px_100px_rgba(0,0,0,0.08)]">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-slate-50 border-b border-slate-100">
+                  <th className="p-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">{t.aspect}</th>
+                  <th className="p-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">{t.traditional}</th>
+                  <th className="p-8 text-[10px] font-black uppercase tracking-[0.2em] text-primary flex items-center gap-2">
+                    <Zap size={14} className="fill-primary animate-pulse"/> SIFS 2026
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {data.comparison?.map((row, index) => (
+                  <motion.tr 
+                    key={row.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="group hover:bg-slate-50/50 transition-colors"
+                  >
+                    <td className="p-8">
+                      <span className="text-sm md:text-base font-extrabold text-slate-900 group-hover:text-primary transition-colors">
+                        {language === "vi" ? row.aspect_vi : row.aspect_en}
+                      </span>
+                    </td>
+                    <td className="p-8">
+                      <div className="flex items-center gap-3 text-slate-400 text-sm italic font-medium">
+                        <XCircle size={16} className="shrink-0 text-slate-300" />
+                        {language === "vi" ? row.traditional_vi : row.traditional_en}
+                      </div>
+                    </td>
+                    <td className="p-8 bg-primary/[0.02] group-hover:bg-primary/[0.05] transition-colors">
+                      <div className="flex items-center gap-3 text-slate-900 text-sm md:text-base font-black italic">
+                        <CheckCircle2 size={20} className="shrink-0 text-primary" />
+                        {language === "vi" ? row.sifs_vi : row.sifs_en}
+                      </div>
+                    </td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>

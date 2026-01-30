@@ -1,6 +1,7 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
 import { ChevronUp } from "lucide-react"
 
 interface BackToTopProps {
@@ -8,6 +9,15 @@ interface BackToTopProps {
 }
 
 export default function BackToTop({ visible }: BackToTopProps) {
+  const { scrollYProgress } = useScroll()
+  
+  // Tạo hiệu ứng vòng tròn tiến trình mượt mà
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
@@ -16,108 +26,65 @@ export default function BackToTop({ visible }: BackToTopProps) {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed bottom-8 right-8 z-40"
-          initial={{ opacity: 0, scale: 0, y: 50 }}
+          className="fixed bottom-10 right-10 z-[60]"
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0, y: 50 }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-          }}
+          exit={{ opacity: 0, scale: 0.5, y: 20 }}
+          whileHover={{ y: -5 }}
         >
-          <motion.div
-            className="absolute -inset-2 rounded-full bg-gradient-to-br from-red-500 via-yellow-400 to-green-500 opacity-40 blur-xl"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 2.5,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-            }}
-          />
+          {/* Vòng tròn tiến trình (Scroll Progress) */}
+          <svg className="w-16 h-16 rotate-[-90deg]">
+            <circle
+              cx="32"
+              cy="32"
+              r="28"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="transparent"
+              className="text-slate-100"
+            />
+            <motion.circle
+              cx="32"
+              cy="32"
+              r="28"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="transparent"
+              className="text-primary"
+              style={{
+                pathLength: scrollYProgress,
+              }}
+            />
+          </svg>
 
-          <motion.button
+          {/* Nút Back to Top chính */}
+          <button
             onClick={scrollToTop}
-            className="relative p-5 rounded-full glass neon-glow-gold hover:scale-125 transition-all duration-300 flex items-center justify-center group shadow-2xl"
-            whileHover={{
-              scale: 1.25,
-              rotate: 10,
-            }}
-            whileTap={{ scale: 0.85 }}
-            animate={{
-              y: [0, -15, 0],
-            }}
-            transition={{
-              y: {
-                duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              },
-            }}
+            className="absolute inset-0 m-auto w-12 h-12 bg-white rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] border border-slate-100 flex items-center justify-center text-slate-900 hover:text-primary transition-colors group"
             aria-label="Back to top"
           >
             <motion.div
-              className="absolute inset-0 rounded-full border-2 border-transparent bg-gradient-to-r from-red-500 via-yellow-400 to-green-500 bg-clip-border opacity-50"
               animate={{
-                rotate: 360,
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
-            />
-
-            <motion.div
-              className="absolute inset-1 rounded-full border-2 border-transparent bg-gradient-to-l from-red-500 via-yellow-300 to-green-500 bg-clip-border opacity-30"
-              animate={{
-                rotate: -360,
-              }}
-              transition={{
-                duration: 3.5,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
-            />
-
-            <motion.div
-              animate={{
-                y: [0, -8, 0],
-              }}
-              transition={{
-                duration: 1.2,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              }}
-              className="relative z-10"
-            >
-              <ChevronUp className="w-8 h-8 text-secondary font-bold drop-shadow-lg" strokeWidth={3} />
-            </motion.div>
-          </motion.button>
-
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-yellow-400 rounded-full"
-              animate={{
-                x: [0, Math.cos((i / 5) * Math.PI * 2) * 30, 0],
-                y: [0, Math.sin((i / 5) * Math.PI * 2) * 30, 0],
-                opacity: [0, 1, 0],
+                y: [0, -4, 0],
               }}
               transition={{
                 duration: 2,
-                repeat: Number.POSITIVE_INFINITY,
-                delay: i * 0.2,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
-              style={{
-                left: "50%",
-                top: "50%",
-              }}
-            />
-          ))}
+            >
+              <ChevronUp size={24} strokeWidth={3} className="group-hover:scale-110 transition-transform" />
+            </motion.div>
+          </button>
+
+          {/* Tooltip nhỏ khi hover */}
+          <motion.span 
+            initial={{ opacity: 0, x: 10 }}
+            whileHover={{ opacity: 1, x: 0 }}
+            className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg pointer-events-none whitespace-nowrap"
+          >
+            Top
+          </motion.span>
         </motion.div>
       )}
     </AnimatePresence>

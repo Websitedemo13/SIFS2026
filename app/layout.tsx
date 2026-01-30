@@ -59,16 +59,16 @@ export default function RootLayout({
   return (
     <html lang="vi" className="scroll-smooth">
       <body
-        className={`${montserrat.variable} ${playfair.variable} font-sans antialiased bg-[#050505] text-white selection:bg-red-600/30`}
+        className={`${montserrat.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}
       >
-        {/* Background Layer: Neon Ambient */}
+        {/* Background Layer: Clean & Minimalist */}
         <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-          {/* Radial Gradient nền */}
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,#4a0000_0%,#050505_80%)]" />
+          {/* Nền Gradient xám cực nhẹ để tạo chiều sâu cho màu trắng */}
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,#f1f5f9_0%,#ffffff_100%)]" />
           
-          {/* Ambient Lights - Đốm sáng chuyển động */}
-          <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-red-600/10 blur-[150px] rounded-full animate-pulse" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-yellow-500/5 blur-[120px] rounded-full" />
+          {/* Ambient Lights - Chỉ để lại đốm sáng đỏ cực mờ làm điểm nhấn */}
+          <div className="absolute top-[5%] left-[-5%] w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full animate-pulse" />
+          <div className="absolute bottom-[0%] right-[-5%] w-[400px] h-[400px] bg-secondary/5 blur-[100px] rounded-full" />
         </div>
         
         <main>{children}</main>
@@ -78,3 +78,9 @@ export default function RootLayout({
     </html>
   )
 }
+
+
+
+
+
+

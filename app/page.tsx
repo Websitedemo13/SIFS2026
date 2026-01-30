@@ -28,12 +28,12 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // FIX LỖI "Rendered fewer hooks": 
-  // Luôn phải để logic render chính ở cuối, không return sớm giữa chừng.
   return (
-    <main className="bg-linear-to-b from-[#050505] via-[#1a0000] to-[#050505] text-white overflow-hidden selection:bg-primary/30 min-h-screen">
+    /* SỬA TẠI ĐÂY: Thay bg-[#050505] thành bg-background và text-white thành text-foreground */
+    <main className="bg-background text-foreground overflow-hidden selection:bg-primary/10 selection:text-primary min-h-screen">
       {loading ? (
-        <div className="fixed inset-0 bg-[#050505] flex flex-col items-center justify-center z-[999]">
+        /* Loading Screen cũng chuyển sang màu sáng cho đồng bộ */
+        <div className="fixed inset-0 bg-white flex flex-col items-center justify-center z-[999]">
           <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
           <p className="text-primary font-black uppercase tracking-widest text-[10px] animate-pulse">SIFS 2026 is Loading...</p>
         </div>
@@ -41,7 +41,7 @@ export default function Home() {
         <>
           <Starfield />
           <PopupGlobal data={content?.popup} language={language} />
-          {/* FIX LỖI 2741: Truyền data={content?.header} */}
+          
           <Header 
             language={language} 
             onLanguageChange={setLanguage} 
@@ -56,7 +56,6 @@ export default function Home() {
           <USPSection language={language} data={content?.usp} />
 
           <div id="advisors">
-            {/* TRUYỀN DATA CMS VÀO ADVISORS */}
             <AdvisorsSection language={language} data={content?.advisors} />
           </div>
 
@@ -68,7 +67,7 @@ export default function Home() {
 
           <ContactSection language={language} data={content?.contact} />
           <PartnersSection language={language} data={content?.partners} />
-          {/* TRUYỀN DATA CMS VÀO FOOTER */}
+          
           <Footer language={language} data={content?.footer} />
           
           <BackToTop visible={showBackToTop} />

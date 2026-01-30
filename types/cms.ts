@@ -218,6 +218,7 @@ export interface PopupSectionData {
   delay_seconds: number;        // Sau bao nhiêu giây thì hiện
   reappear_hours: number;      // Sau bao nhiêu tiếng thì hiện lại (dùng Cookie/Local Storage)
   position: 'center' | 'bottom-right' | 'bottom-left';
+  open_new_tab: boolean;
 }
 export interface PartnerBrand {
   id: string;

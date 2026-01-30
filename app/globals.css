@@ -4,342 +4,104 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated to Tet theme with vibrant fresh colors */
-  /* Vibrant Tet red, gold, and festive green */
-  --background: 48 100% 97%;
-  --foreground: 0 0% 15%;
+  /* --- THEME SÁNG (NỀN TRẮNG - CHỮ ĐEN) --- */
+  --background: 0 0% 100%;    /* Trắng tinh khôi #ffffff */
+  --foreground: 0 0% 10%;     /* Đen sâu #1a1a1a */
+  
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 15%;
+  --card-foreground: 0 0% 10%;
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 15%;
-  --primary: 0 100% 44%; /* Vibrant Red #DC143C */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 39 100% 50%; /* Vibrant Gold #FFD700 */
-  --secondary-foreground: 0 0% 15%;
-  --muted: 30 30% 85%;
-  --muted-foreground: 0 0% 50%;
-  --accent: 120 70% 40%; /* Festive Green #2E8B57 */
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 30 50% 90%;
-  --input: 30 30% 95%;
-  --ring: 0 100% 44%;
-  --chart-1: 0 100% 44%;
-  --chart-2: 39 100% 50%;
-  --chart-3: 120 70% 40%;
-  --chart-4: 30 100% 55%;
-  --chart-5: 350 100% 52%;
-  --radius: 0.75rem;
-  --sidebar: 0 0% 100%;
-  --sidebar-foreground: 0 0% 15%;
-  --sidebar-primary: 0 100% 44%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 39 100% 50%;
-  --sidebar-accent-foreground: 0 0% 15%;
-  --sidebar-border: 30 50% 90%;
-  --sidebar-ring: 0 100% 44%;
-}
+  --popover-foreground: 0 0% 10%;
 
-.dark {
-  --background: 48 30% 8%;
-  --foreground: 48 40% 95%;
-  --card: 48 25% 12%;
-  --card-foreground: 48 40% 95%;
-  --popover: 48 25% 12%;
-  --popover-foreground: 48 40% 95%;
-  --primary: 0 100% 55%;
+  /* Màu đỏ SIFS làm điểm nhấn (Primary) */
+  --primary: 359 69% 33%;    /* Đỏ SIFS #8d1a1b */
   --primary-foreground: 0 0% 100%;
-  --secondary: 39 100% 60%;
-  --secondary-foreground: 0 0% 15%;
-  --muted: 48 25% 30%;
-  --muted-foreground: 48 30% 70%;
-  --accent: 120 70% 50%;
+
+  --secondary: 45 100% 50%;   /* Vàng Gold điểm xuyết */
+  --secondary-foreground: 0 0% 10%;
+
+  --muted: 210 20% 96%;
+  --muted-foreground: 215 16% 47%;
+
+  --accent: 359 69% 33%;
   --accent-foreground: 0 0% 100%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 48 25% 25%;
-  --input: 48 25% 18%;
-  --ring: 0 100% 55%;
-  --chart-1: 0 100% 55%;
-  --chart-2: 39 100% 60%;
-  --chart-3: 120 70% 50%;
-  --chart-4: 30 100% 60%;
-  --chart-5: 350 100% 60%;
-  --sidebar: 48 25% 15%;
-  --sidebar-foreground: 48 40% 95%;
-  --sidebar-primary: 0 100% 55%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 39 100% 60%;
-  --sidebar-accent-foreground: 0 0% 15%;
-  --sidebar-border: 48 25% 25%;
-  --sidebar-ring: 0 100% 55%;
+
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 359 69% 33%;
+  --radius: 1rem;
 }
 
 @theme inline {
-  /* Luxury serif for headings, clean sans-serif for body */
-  --font-sans: "Montserrat", "Montserrat Fallback";
-  --font-serif: "Playfair Display", "Playfair Display Fallback";
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
   --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
   --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-chart-1: hsl(var(--chart-1));
-  --color-chart-2: hsl(var(--chart-2));
-  --color-chart-3: hsl(var(--chart-3));
-  --color-chart-4: hsl(var(--chart-4));
-  --color-chart-5: hsl(var(--chart-5));
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: hsl(var(--sidebar));
-  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
-  --color-sidebar-primary: hsl(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
-  --color-sidebar-accent: hsl(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
-  --color-sidebar-border: hsl(var(--sidebar-border));
-  --color-sidebar-ring: hsl(var(--sidebar-ring));
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 selection:bg-primary/10 selection:text-primary;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif text-foreground tracking-tighter;
   }
 }
 
-/* Tet-themed festive background with warm gradient */
-@keyframes float-particles {
-  0%,
-  100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  25% {
-    transform: translateY(-30px) translateX(15px);
-  }
-  50% {
-    transform: translateY(-15px) translateX(-20px);
-  }
-  75% {
-    transform: translateY(-25px) translateX(10px);
-  }
-}
-
-@keyframes shimmer {
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
+/* Starfield cho bản Sáng - Hiệu ứng tinh vân xám nhẹ */
 .starfield {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 193, 7, 0.08) 0%,
-    rgba(220, 20, 60, 0.08) 50%,
-    rgba(46, 139, 87, 0.08) 100%
+  background: radial-gradient(
+    circle at 50% -20%,
+    rgba(248, 250, 252, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
   );
 }
 
 .star {
   position: absolute;
-  background: linear-gradient(135deg, #ffd700 0%, #dc143c 50%, #2e8b57 100%);
+  /* Hạt bụi màu xám mờ ảo */
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
   border-radius: 50%;
-  animation: shimmer 3s ease-in-out infinite, float-particles 6s ease-in-out infinite;
+  animation: shimmer 4s ease-in-out infinite, float-particles 10s ease-in-out infinite;
 }
 
-/* Updated glow effects for Tet colors */
-.neon-glow {
-  box-shadow: 0 0 20px rgba(220, 20, 60, 0.6), 0 0 40px rgba(255, 215, 0, 0.3), 0 0 60px rgba(46, 139, 87, 0.2), inset 0
-    0 20px rgba(255, 215, 0, 0.1);
-}
-
-.neon-glow-gold {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(220, 20, 60, 0.4), 0 0 60px rgba(46, 139, 87, 0.2), inset 0
-    0 15px rgba(255, 215, 0, 0.2);
-}
-
-.neon-text {
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(220, 20, 60, 0.5), 0 0 30px rgba(46, 139, 87, 0.3);
-}
-
-/* Festive glassmorphism for light theme */
+/* Glassmorphism cho nền Trắng */
 .glass {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px) saturate(200%);
-  border: 2px solid rgba(220, 20, 60, 0.2);
-  box-shadow: 0 8px 32px rgba(220, 20, 60, 0.1), 0 0 15px rgba(255, 215, 0, 0.05);
-}
-
-.glass-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
 }
 
 .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(220, 20, 60, 0.4);
-  box-shadow: 0 8px 32px rgba(220, 20, 60, 0.15), 0 0 25px rgba(255, 215, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(141, 26, 27, 0.1);
   transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
-.font-serif {
-  font-family: var(--font-serif, "Playfair Display", serif);
+/* Neon Text tinh tế - Không chói lòa */
+.neon-text {
+  color: #1a1a1a;
+  text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Enhanced animations for Tet theme */
-@keyframes pulse-glow-tet {
-  0%,
-  100% {
-    box-shadow: 0 0 15px rgba(220, 20, 60, 0.5), 0 0 30px rgba(255, 215, 0, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(220, 20, 60, 0.8), 0 0 60px rgba(255, 215, 0, 0.4);
-  }
+@keyframes float-particles {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(15px, -20px); }
 }
 
-@keyframes float-button {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.pulse-glow {
-  animation: pulse-glow-tet 2s ease-in-out infinite;
-}
-
-.float-button {
-  animation: float-button 3s ease-in-out infinite;
-}
-
-.spin-slow {
-  animation: spin-slow 4s linear infinite;
-}
-
-/* Enhanced Tet-specific animations and effects */
-@keyframes float-lanterns {
-  0%,
-  100% {
-    transform: translateY(0px) translateX(-10px);
-  }
-  25% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  50% {
-    transform: translateY(-30px) translateX(-5px);
-  }
-  75% {
-    transform: translateY(-15px) translateX(15px);
-  }
-}
-
-@keyframes spin-envelope {
-  0% {
-    transform: rotateY(0deg) rotateZ(0deg);
-  }
-  50% {
-    transform: rotateY(180deg) rotateZ(180deg);
-  }
-  100% {
-    transform: rotateY(360deg) rotateZ(360deg);
-  }
-}
-
-@keyframes bloom-flowers {
-  0% {
-    transform: scale(0) rotate(-180deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 0;
-  }
-}
-
-@keyframes festive-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(220, 20, 60, 0.6), 0 0 40px rgba(255, 215, 0, 0.4), 0 0 60px rgba(46, 139, 87, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(220, 20, 60, 0.8), 0 0 60px rgba(255, 215, 0, 0.6), 0 0 90px rgba(46, 139, 87, 0.3);
-  }
-}
-
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.float-lanterns {
-  animation: float-lanterns 8s ease-in-out infinite;
-}
-
-.spin-envelope {
-  animation: spin-envelope 2s ease-in-out infinite;
-}
-
-.bloom-flowers {
-  animation: bloom-flowers 6s ease-out forwards;
-}
-
-.festive-glow {
-  animation: festive-glow 2.5s ease-in-out infinite;
-}
-
-.sparkle {
-  animation: sparkle 1.5s ease-in-out infinite;
-}
-
-/* Enhanced neon glow for gold */
-.neon-glow-gold {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(220, 20, 60, 0.4), 0 0 60px rgba(46, 139, 87, 0.2), inset 0
-    0 15px rgba(255, 215, 0, 0.2);
+@keyframes shimmer {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
 }
