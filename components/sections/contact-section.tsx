@@ -103,8 +103,8 @@ export default function ContactSection({ language, data }: ContactSectionProps) 
               </div>
 
               {data.map_embed_url && (
-                <div className="rounded-[3rem] overflow-hidden h-72 border border-slate-100 bg-slate-50 shadow-xl relative">
-                  <iframe src={data.map_embed_url} className="w-full h-full border-none grayscale hover:grayscale-0 transition-all duration-700" allowFullScreen loading="lazy"></iframe>
+                <div className="rounded-[3rem] overflow-hidden h-70 border border-slate-100 bg-slate-50 shadow-xl relative">
+                  <iframe src={data.map_embed_url} className="w-full h-full transition-all duration-700" allowFullScreen loading="lazy"></iframe>
                 </div>
               )}
             </div>
