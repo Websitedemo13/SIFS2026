@@ -49,7 +49,7 @@ export default function Footer({ language, data }: FooterProps) {
                 </div>
               )}
               {data.logo_text && (
-                <span className="text-4xl font-black text-slate-900 italic tracking-tighter font-serif uppercase">
+                <span className="text-4xl font-black text-slate-900 tracking-tighter font-sans uppercase" style={{ fontFamily: 'var(--font-montserrat)' }}>
                   {data.logo_text}
                 </span>
               )}

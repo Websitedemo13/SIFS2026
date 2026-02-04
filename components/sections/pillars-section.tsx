@@ -27,8 +27,8 @@ export default function PillarsSection({ language, data }: PillarsSectionProps) 
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          {/* Chỉnh size chữ đồng bộ với các phần khác */}
-          <h2 className="text-4xl md:text-7xl font-black text-slate-900 font-serif italic mb-6 uppercase tracking-tighter leading-tight">
+          {/* Chỉnh size chữ đồng bộ với các phần khác - Montserrat */}
+          <h2 className="text-4xl md:text-7xl font-black text-slate-900 font-sans mb-6 uppercase tracking-tighter leading-tight" style={{ fontFamily: 'var(--font-montserrat)' }}>
             {title || "Các Trụ Cột SIFS 2026"}
           </h2>
           <div className="w-20 h-1.5 bg-primary mx-auto rounded-full opacity-20" />

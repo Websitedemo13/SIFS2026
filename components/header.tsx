@@ -67,7 +67,7 @@ export default function Header({ language, onLanguageChange, data }: HeaderProps
             </div>
           )}
           {data.logo_text && (
-            <span className="text-2xl md:text-3xl font-black text-slate-900 italic tracking-tighter font-serif uppercase leading-none">
+            <span className="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter font-sans uppercase leading-none" style={{ fontFamily: 'var(--font-montserrat)' }}>
               {data.logo_text}
             </span>
           )}

@@ -53,7 +53,7 @@
     /* FIX LỖI BUILD: Bỏ hậu tố /50 ở outline-ring */
     @apply border-border outline-ring;
   }
-  
+
   body {
     /* Ép dùng Montserrat và màu nền trắng tuyệt đối */
     background-color: #ffffff !important;
@@ -61,9 +61,41 @@
     @apply font-sans antialiased;
     font-feature-settings: "cv11", "ss01";
   }
-  
-  h1, h2, h3, h4, .font-serif {
-    @apply font-serif;
+
+  /* Montserrat for all headings - professional and consistent */
+  h1 {
+    @apply font-sans font-black text-6xl md:text-7xl tracking-tight leading-tight;
+  }
+
+  h2 {
+    @apply font-sans font-black text-4xl md:text-5xl tracking-tight leading-snug;
+  }
+
+  h3 {
+    @apply font-sans font-bold text-2xl md:text-3xl tracking-tight;
+  }
+
+  h4 {
+    @apply font-sans font-bold text-xl tracking-tight;
+  }
+
+  h5, h6 {
+    @apply font-sans font-semibold text-base tracking-normal;
+  }
+
+  /* Body text - consistent sizing */
+  p {
+    @apply font-sans font-normal text-base leading-relaxed;
+  }
+
+  /* Small text */
+  small, .text-sm {
+    @apply font-sans font-normal text-sm leading-snug;
+  }
+
+  /* Labels and UI text */
+  label, .label {
+    @apply font-sans font-medium text-sm tracking-normal;
   }
 }
 

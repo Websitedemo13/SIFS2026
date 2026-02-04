@@ -34,7 +34,7 @@ export default function BoothMapSection({ language, data }: BoothMapSectionProps
           viewport={{ once: true }}
           className="text-center mb-24"
         >
-          <h2 className="text-5xl md:text-8xl font-black text-slate-900 font-serif italic uppercase tracking-tighter mb-6">
+          <h2 className="text-5xl md:text-8xl font-black text-slate-900 font-sans uppercase tracking-tighter mb-6" style={{ fontFamily: 'var(--font-montserrat)' }}>
             {t.title}
           </h2>
           <div className="flex items-center justify-center gap-3 text-slate-400">

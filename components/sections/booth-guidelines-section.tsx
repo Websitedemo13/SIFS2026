@@ -45,7 +45,7 @@ export default function BoothGuidelinesSection({ language }: BoothGuidelinesProp
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-7xl font-black text-slate-900 font-serif italic uppercase tracking-tighter mb-4">
+          <h2 className="text-4xl md:text-7xl font-black text-slate-900 font-sans uppercase tracking-tighter mb-4" style={{ fontFamily: 'var(--font-montserrat)' }}>
             {t.title}
           </h2>
           <div className="w-20 h-1.5 bg-primary mx-auto rounded-full opacity-20" />

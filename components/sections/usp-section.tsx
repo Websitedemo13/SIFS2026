@@ -27,8 +27,8 @@ export default function USPSection({ language, data }: { language: "vi" | "en", 
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          {/* Tiêu đề 7xl đồng bộ */}
-          <h2 className="text-4xl md:text-7xl font-black text-slate-900 font-serif italic mb-6 uppercase tracking-tighter">
+          {/* Tiêu đề Montserrat - chuyên nghiệp */}
+          <h2 className="text-4xl md:text-7xl font-black text-slate-900 font-sans mb-6 uppercase tracking-tighter" style={{ fontFamily: 'var(--font-montserrat)' }}>
             {t.title || "Lợi thế vượt trội"}
           </h2>
           <div className="w-20 h-1.5 bg-primary mx-auto rounded-full opacity-20 mb-6" />
