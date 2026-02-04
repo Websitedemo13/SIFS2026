@@ -65,7 +65,7 @@ export default function ContactSection({ language, data }: ContactSectionProps) 
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-24">
-          <h2 className="text-6xl md:text-9xl font-black font-serif italic mb-6 text-slate-900 uppercase tracking-tighter">
+          <h2 className="text-6xl md:text-9xl font-black font-sans mb-6 text-slate-900 uppercase tracking-tighter" style={{ fontFamily: 'var(--font-montserrat)' }}>
             {language === "vi" ? data.title_vi : data.title_en}
           </h2>
           <p className="text-primary font-black uppercase tracking-[0.4em] italic text-sm md:text-base">
@@ -115,7 +115,7 @@ export default function ContactSection({ language, data }: ContactSectionProps) 
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} className="p-12 md:p-16 rounded-[4rem] bg-white border border-slate-100 shadow-[0_30px_100px_rgba(0,0,0,0.05)] relative">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-30" />
               
-              <h3 className="text-4xl font-black text-slate-900 mb-12 font-serif italic tracking-tighter">
+              <h3 className="text-4xl font-black text-slate-900 mb-12 font-sans tracking-tighter" style={{ fontFamily: 'var(--font-montserrat)' }}>
                 {language === "vi" ? "Đăng Ký Tham Gia" : "Register Now"}
               </h3>
               
