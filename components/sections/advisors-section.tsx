@@ -23,8 +23,8 @@ export default function AdvisorsSection({ language, data }: AdvisorsSectionProps
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          {/* Giảm từ 9xl xuống tối đa 7xl cho cân đối */}
-          <h2 className="text-4xl md:text-7xl font-black mb-6 font-serif italic uppercase tracking-tighter text-slate-900 leading-tight">
+          {/* Giảm từ 9xl xuống tối đa 7xl cho cân đối - Montserrat */}
+          <h2 className="text-4xl md:text-7xl font-black mb-6 font-sans uppercase tracking-tighter text-slate-900 leading-tight" style={{ fontFamily: 'var(--font-montserrat)' }}>
             {language === "vi" ? data.title_vi : data.title_en}
           </h2>
           
