@@ -96,7 +96,8 @@ export default function PricingSection({ language }: PricingSectionProps) {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 neon-text font-serif"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 neon-text font-sans"
+          style={{ fontFamily: 'var(--font-montserrat)' }}
         >
           {t.title}
         </motion.h2>
