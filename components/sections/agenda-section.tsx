@@ -40,7 +40,7 @@ export default function AgendaSection({ language, data }: AgendaSectionProps) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-7xl font-black mb-4 text-slate-900 font-serif italic uppercase tracking-tighter">
+          <h2 className="text-4xl md:text-7xl font-black mb-4 text-slate-900 font-sans uppercase tracking-tighter" style={{ fontFamily: 'var(--font-montserrat)' }}>
             {t.title}
           </h2>
           <p className="text-slate-400 italic tracking-[0.3em] text-[10px] font-black uppercase opacity-60">{t.subtitle}</p>
