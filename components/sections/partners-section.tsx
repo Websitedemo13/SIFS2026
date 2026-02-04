@@ -44,7 +44,7 @@ export default function PartnersSection({ language, data }: { language: string, 
             className="space-y-16"
           >
             <div className="flex flex-col items-center gap-6">
-              <h3 className="text-4xl md:text-7xl font-black text-slate-900 font-serif italic uppercase tracking-tighter text-center leading-tight">
+              <h3 className="text-4xl md:text-7xl font-black text-slate-900 font-sans uppercase tracking-tighter text-center leading-tight" style={{ fontFamily: 'var(--font-montserrat)' }}>
                 {language === "vi" ? group.group_name_vi : group.group_name_en}
               </h3>
               <div className="w-20 h-1.5 bg-primary rounded-full opacity-20" />
