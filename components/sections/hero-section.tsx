@@ -66,13 +66,14 @@ export default function HeroSection({ language, data }: { language: "vi" | "en",
         animate={{ opacity: 1 }}
         className={`relative z-10 w-full max-w-5xl mx-auto text-center ${textColor}`}
       >
-        {/* Tiêu đề: Đổi text-shadow sang màu mờ nhẹ để thanh lịch */}
+        {/* Tiêu đề: Montserrat Bold - Chuyên nghiệp và đạt chuẩn */}
         <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
-          <h1 
-            className={`text-6xl md:text-9xl font-black mb-6 tracking-tighter ${data.font_family}`}
-            style={{ 
-              color: '#1a1a1a', 
-              textShadow: '0 10px 30px rgba(0,0,0,0.05)' 
+          <h1
+            className="text-6xl md:text-9xl font-black mb-6 tracking-tighter font-sans"
+            style={{
+              color: '#1a1a1a',
+              textShadow: '0 10px 30px rgba(0,0,0,0.05)',
+              fontFamily: 'var(--font-montserrat)'
             }}
           >
             {data.title}
